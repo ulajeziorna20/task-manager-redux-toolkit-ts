@@ -6,23 +6,30 @@ import './registration.scss';
 import '../../styles/components/_button.scss';
 
 
+type SignUpData = {
+  email: string,
+  password: string,
+  username: string,
+}
+
+
 const Signup = () => {
 
 
-  const [state, setState] = useState({
+  const [signUpData, setSignUpData] = useState<SignUpData>({
     email: '',
     password: '',
     username: '',
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  // };
 
 
-  const handleChange = (e) => {
-    setState({
-      ...state,
+  const handleChange = (e: any): void => {
+    setSignUpData({
+      ...signUpData,
       [e.target.name]: e.target.value,
     });
   };
@@ -40,28 +47,28 @@ const Signup = () => {
               type='text'
               placeholder='Enter Name'
               name='username'
-              value={state.username}
-							onChange={handleChange}
+              value={signUpData.username}
+              onChange={(e:React.ChangeEvent<HTMLInputElement>): void => handleChange(e)}
             />
           </div>
           <div className='form-group'>
             <input
               type='email'
               name='email'
-              value={state.email}
-							id=''
-							placeholder='Enter Email'
-							onChange={handleChange}
+              value={signUpData.email}
+              id=''
+              placeholder='Enter Email'
+              onChange={(e:React.ChangeEvent<HTMLInputElement>): void => handleChange(e)}
             />
           </div>
           <div className='form-group'>
             <input
               type='password'
               name='password'
-              value={state.password}
-							id=''
-							placeholder='Enter Password'
-							onChange={handleChange}
+              value={signUpData.password}
+              id=''
+              placeholder='Enter Password'
+              onChange={(e:React.ChangeEvent<HTMLInputElement>): void => handleChange(e)}
             />
           </div>
           <div className='form-group'>
