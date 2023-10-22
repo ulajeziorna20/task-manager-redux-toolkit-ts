@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { register } from '../api/registerAPI';
 
 
 import './registration.scss';
 import '../../styles/components/_button.scss';
+import { AppDispatch } from '../../slices/store';
 
 
-type SignUpData = {
+export type SignUpData = {
   email: string,
   password: string,
   username: string,
@@ -16,21 +19,39 @@ type SignUpData = {
 const Signup = () => {
 
 
+
+  const dispatch: AppDispatch = useDispatch();
+
+
   const [signUpData, setSignUpData] = useState<SignUpData>({
     email: '',
     password: '',
     username: '',
   });
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  // };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // console.log(signUpData);
 
 
-  const handleChange = (e: any): void => {
+    let signupPayload = {
+      username: signUpData.username,
+      email: signUpData.email,
+      password: signUpData.password
+
+    }
+
+
+    dispatch(
+      register(JSON.stringify(signUpData))
+    );
+  };
+
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSignUpData({
       ...signUpData,
-      [e.target.name]: e.target.value,
+      [e.target?.name]: e.target.value,
     });
   };
 
@@ -39,7 +60,7 @@ const Signup = () => {
   return (
     <div className='signup-form'>
       <div className='signup-form__wrapper'>
-        <form className='form'>
+        <form className='form' onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleSubmit(e)}>
           <h4>Sign up</h4>
 
           <div className='form-group'>
@@ -48,7 +69,7 @@ const Signup = () => {
               placeholder='Enter Name'
               name='username'
               value={signUpData.username}
-              onChange={(e:React.ChangeEvent<HTMLInputElement>): void => handleChange(e)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>): void => handleChange(e)}
             />
           </div>
           <div className='form-group'>
@@ -56,9 +77,8 @@ const Signup = () => {
               type='email'
               name='email'
               value={signUpData.email}
-              id=''
               placeholder='Enter Email'
-              onChange={(e:React.ChangeEvent<HTMLInputElement>): void => handleChange(e)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>): void => handleChange(e)}
             />
           </div>
           <div className='form-group'>
@@ -66,13 +86,12 @@ const Signup = () => {
               type='password'
               name='password'
               value={signUpData.password}
-              id=''
               placeholder='Enter Password'
-              onChange={(e:React.ChangeEvent<HTMLInputElement>): void => handleChange(e)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>): void => handleChange(e)}
             />
           </div>
           <div className='form-group'>
-            <button className='button'>Sing Up</button>
+            <button type='submit' className='button'>Sing Up</button>
           </div>
         </form>
       </div>

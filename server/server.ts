@@ -1,17 +1,42 @@
-const express = require('express');
-const app: any = express();
+import express, { Express, Request, Response } from 'express';
+
+// const app = express(); zamiast tego
+export const app: Express = express();
+app.use(express.urlencoded({ extended: true }));
+
+
 require('../database/db.ts')
-// const mongoose = require('mongoose');
-// const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
-// mongoose.connect('mongodb://127.0.0.1:27017/mern-clients-apps',  { useNewUrlParser: true, useUnifiedTopology: true });
-
-app.use(express.json());
-// app.use(cookieParser());
-// app.use(cors());
+const authRoutes = require('./routes/authRoutes')
 
 
 
-app.listen(4000, (): void => {
-    console.log('Server CRM started');
-})
+const cors = require('cors')
+app.use(cors());
+
+
+// parsing body.data
+
+export const jsonParser = bodyParser.json()
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+// app.use(express.json());
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// routes localhost:4000
+
+app.use('/auth', authRoutes)
+
+
+
+
+
+
+
+app.listen(4000, () => {
+    console.log('Server is up');
+
+}); // or server.listen(3001, '0.0.0.0'); for all interfaces
