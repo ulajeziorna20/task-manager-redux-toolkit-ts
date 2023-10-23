@@ -9,6 +9,7 @@ module.exports = {
 
   signin: async (req: Request, res: Response) => {
 
+    console.log('signin');
     // zwróc uwage na to typowanie podczas destrukturyzacji odpowiedzi req
     let { email, password } = req.body as { email: String, password: String };
     try {
@@ -40,7 +41,7 @@ module.exports = {
         });
       });
     } catch (error) {
-      return res.status(400).send('login failed');
+      return res.status(400).json('login failed');
     }
   },
 

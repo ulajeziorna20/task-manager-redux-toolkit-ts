@@ -3,7 +3,8 @@ import Header from './components/header/Header'
 import Signin from './components/registration/Signin'
 import Signup from './components/registration/Signup'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
+import Home from './pages/home/Home';
+import Dashboard from './pages/dashboard/Dashboard';
 
 
 
@@ -15,6 +16,7 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/dashboard' element={<Dashboard />} />
           <Route
             path='/signin'
             element={<Signin />}

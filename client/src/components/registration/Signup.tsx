@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { register } from '../api/registerAPI';
+import { register } from '../../api/registerAPI';
 
 
 import './registration.scss';
@@ -43,7 +43,7 @@ const Signup = () => {
 
 
     dispatch(
-      register(JSON.stringify(signUpData))
+      register(JSON.stringify(signupPayload))
     );
   };
 

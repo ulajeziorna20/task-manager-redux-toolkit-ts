@@ -14,5 +14,8 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+
+    "typedef": [true, "parameter"]
+
   },
 }

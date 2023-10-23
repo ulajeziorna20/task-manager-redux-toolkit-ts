@@ -1,7 +1,9 @@
 import axios, { AxiosResponse } from "axios";
-import { SignUpData } from "../registration/Signup";
+import { SignUpData } from "../components/registration/Signup";
 import { toast } from "react-toastify";
-import { registerFailure, registerSuccess } from "../../slices/authSlice";
+import { registerFailure, registerSuccess } from "../slices/authSlice";
+
+import history from '../browserHistory'
 
 export const register = (user: String) => async (dispatch: any) => {
   console.log(user);
@@ -21,17 +23,17 @@ export const register = (user: String) => async (dispatch: any) => {
     if (res) {
 
       console.log(res);
-      
+
       dispatch(registerSuccess(res.data));
       toast.success('register successfull');
       // trtzeba naprawic
-      // history.push('/signin');
+      history.push('/signin');
       window.location.reload();
     }
   }).catch((error) => {
     console.error(error);
-    // dispatch(registerFailure(error));
-    // toast.error('registration failed');
+    dispatch(registerFailure(error));
+    toast.error('registration failed');
 
   })
 }

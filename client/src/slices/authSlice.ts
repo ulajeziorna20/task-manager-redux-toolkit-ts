@@ -58,7 +58,7 @@ export const {
 } = authSlice.actions;
 
 
-// ???? nie wiem czy to jest dobre
+// ???? nie wiem czy to jest dobre BARDZO WAZNE TO JEST 
 export const auth = (state: RootState) => state.authReducer
 
 export default authSlice.reducer;
