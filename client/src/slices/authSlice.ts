@@ -11,32 +11,52 @@ import { Dispatch } from 'react';
 
 
 
-type initialStateType = {
+const initialUser: string | null = (localStorage.getItem('auth') ? localStorage.getItem('auth') : null);
+
+
+let parseInitialUser: currentUser | null = (initialUser !== null ? JSON.parse(initialUser) : null)
+
+console.log(parseInitialUser);
+
+
+
+type currentUser = {
+  email: string,
+  id: string,
+  token: string,
+  username: string,
+}
+
+
+export type initialStateType = {
   isLoading: Boolean,
-  currentUser: any,
+  currentUser: currentUser | null,
   error: Error | null,
 }
 
 
 const initialState: initialStateType = {
   isLoading: false,
-  currentUser: null,
+  currentUser: parseInitialUser,
   error: null,
 };
+
+
+console.log(parseInitialUser);
 
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState: initialState,
   reducers: {
-    loginSuccess: (state: initialStateType, action: PayloadAction<initialStateType>): void => {
+    loginSuccess: (state: initialStateType, action: PayloadAction<currentUser>): void => {
       state.currentUser = action.payload;
       state.isLoading = false;
     },
     loginFailure: (state: initialStateType, action: PayloadAction<Error>): void => {
       state.error = action.payload;
     },
-    registerSuccess: (state: initialStateType, action: PayloadAction<initialStateType>): void => {
+    registerSuccess: (state: initialStateType, action: PayloadAction<currentUser>): void => {
       state.currentUser = action.payload;
       state.isLoading = false;
     },
@@ -59,7 +79,7 @@ export const {
 
 
 // ???? nie wiem czy to jest dobre BARDZO WAZNE TO JEST 
-export const auth = (state: RootState) => state.authReducer
+// export const auth= (state: RootState) => state.auth.currentUser 
 
 export default authSlice.reducer;
 
