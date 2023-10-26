@@ -9,6 +9,7 @@ require('../database/db.ts')
 const bodyParser = require('body-parser');
 
 const authRoutes = require('./routes/authRoutes')
+const taskRouter = require('./routes/taskRoutes');
 
 
 
@@ -29,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // routes localhost:4000
 
 app.use('/auth', authRoutes)
-
+app.use('/task', taskRouter);
 
 
 

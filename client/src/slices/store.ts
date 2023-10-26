@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-
-import reducer, { initialStateType } from './authSlice'
-
+// czemu imprtuje z authSlice a juz z taskSlice nie muszę ???
+import  { initialStateType } from './authSlice'
+import authReducer from './authSlice'
+import taskReducer from './taskSlice'
 
 export const store = configureStore({
-  reducer: { auth: reducer }
+  reducer: { auth: authReducer, task: taskReducer }
 })
 
 
