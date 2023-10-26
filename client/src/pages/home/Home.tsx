@@ -20,7 +20,7 @@ const Home = () => {
         <h2>Organize it all</h2>
         <p>With TaskManager</p>
 
-        {auth && auth.token ? (
+        {auth && auth?.token ? (
           <Link to='/dashboard' className='button'>
             Get Started
           </Link>

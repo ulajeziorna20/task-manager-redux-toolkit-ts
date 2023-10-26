@@ -5,6 +5,7 @@ import './index.css'
 
 import { store } from './slices/store.ts';
 import { Provider } from 'react-redux/es/exports'
+import { BrowserRouter } from 'react-router-dom';
 
 
 
@@ -12,7 +13,9 @@ import { Provider } from 'react-redux/es/exports'
 ReactDOM.createRoot(document.getElementById('root')! as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
 )
