@@ -54,7 +54,7 @@ const AddTask = () => {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
             value={state.task}
           />
-          <button className='button'>Add Task</button>
+          <button className='button'>Add Task </button>
         </form>
       </div>
     </div>

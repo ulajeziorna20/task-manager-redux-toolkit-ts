@@ -16,11 +16,11 @@ const initialUser: string | null = (localStorage.getItem('auth') ? localStorage.
 
 let parseInitialUser: currentUser | null = (initialUser !== null ? JSON.parse(initialUser) : null)
 
-console.log(parseInitialUser);
+// console.log(parseInitialUser);
 
 
 
-type currentUser = {
+export type currentUser = {
   email: string,
   id: string,
   token: string,
@@ -42,7 +42,7 @@ const initialState: initialStateType = {
 };
 
 
-console.log(parseInitialUser);
+// console.log(parseInitialUser);
 
 
 export const authSlice = createSlice({

@@ -11,7 +11,7 @@ const taskSchema = mongoose.Schema(
     cretedBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
-    },
+    }
   },
   { timestamp: true }
 );

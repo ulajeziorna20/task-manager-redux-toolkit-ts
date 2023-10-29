@@ -3,8 +3,6 @@ import { taskAddFailure, taskAddedSuccessfully } from "../slices/taskSlice";
 import { toast } from "react-toastify";
 
 export const addTask = (task: string, id: string) => async (dispatch: any) => {
-  console.log(task);
-
 
 
   const config = {
@@ -18,6 +16,9 @@ export const addTask = (task: string, id: string) => async (dispatch: any) => {
     task: task,
     id: id,
   };
+
+  console.log(taskData);
+  
   
   const response = await axios.post('http://localhost:4000/task/add', taskData, config);
   if (response) {

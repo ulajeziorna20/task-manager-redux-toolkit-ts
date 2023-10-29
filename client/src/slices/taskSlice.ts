@@ -1,21 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
 
 
 
-type initialTask = {
+export type initialTask = {
   task: string,
-  status: {
-    type: string,
-    enum: string[],
-    default: string,
-  },
-  cretedBy: {
-    type: string,
-    ref: string,
-  },
+  status: string
+  cretedBy: string,
+  _id: string
 }
 
 
@@ -26,9 +20,15 @@ let parseInitalTask: initialTask | null = (initalTask !== null ? JSON.parse(init
 
 
 
-const initialState = {
+type InitialState = {
+  TaskData: initialTask | null,
+  AllTasks: initialTask[],
+}
+
+
+const initialState: InitialState = {
   TaskData: parseInitalTask,
-  AllTasks: {},
+  AllTasks: [],
 };
 
 
@@ -37,27 +37,27 @@ export const taskSlice = createSlice({
   initialState,
 
   reducers: {
-    taskAddedSuccessfully: (state, action) => {
+    taskAddedSuccessfully: (state: InitialState, action: PayloadAction<initialTask>) => {
       state.TaskData = action.payload;
     },
     taskAddFailure: (state) => {
       return state;
     },
-    getAllTaskSuccess: (state, action) => {
+    getAllTaskSuccess: (state: InitialState, action: PayloadAction<initialTask[]>) => {
       state.AllTasks = action.payload;
     },
-    getAllTaskFailure: (state) => {
+    getAllTaskFailure: (state: InitialState,) => {
       return state;
     },
 
-    editTaskSuccess: (state, action) => {
+    editTaskSuccess: (state: InitialState, action: PayloadAction<initialTask>) => {
       state.TaskData = action.payload;
     },
 
-    deleteSuccess: (state, action) => {
+    deleteSuccess: (state: InitialState, action: PayloadAction<initialTask>) => {
       state.TaskData = action.payload;
     },
-    deletefail: (state) => {
+    deletefail: (state: InitialState) => {
       return state;
     },
   },
