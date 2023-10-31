@@ -54,6 +54,10 @@ export const taskSlice = createSlice({
       state.TaskData = action.payload;
     },
 
+    editTaskFailure: (state: InitialState) => {
+      return state;
+    },
+
     deleteSuccess: (state: InitialState, action: PayloadAction<initialTask>) => {
       state.TaskData = action.payload;
     },
@@ -71,6 +75,7 @@ export const {
   deleteSuccess,
   deletefail,
   editTaskSuccess,
+  editTaskFailure
 } = taskSlice.actions;
 
 export default taskSlice.reducer;

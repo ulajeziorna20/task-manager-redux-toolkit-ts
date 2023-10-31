@@ -88,7 +88,7 @@ module.exports = {
 
     const { id } = req.params as { id: string };
     try {
-      console.log('przeszło');
+
       let response = await Task.findByIdAndDelete(id);
       return res.status(200).send(response);
     } catch (error) {
@@ -96,7 +96,29 @@ module.exports = {
 
       return res.status(400).send('deleteFailed');
     }
-  }
+  },
+
+
+  editTask: async (req: Request, res: Response) => {
+
+    const { id } = req.params as { id: string };
+    const { content } = req.body as { content: string };
+
+    console.log('jojojo');
+    try {
+
+      let response = await Task.findByIdAndUpdate(id, { task: content }, {  returnOriginal: false});
+      console.log(response);
+
+
+
+      return res.status(200).send(response);
+    } catch (error) {
+
+      return res.status(400).send('deleteFailed');
+    }
+  },
+
 
 
 }

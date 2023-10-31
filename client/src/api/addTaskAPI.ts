@@ -17,12 +17,15 @@ export const addTask = (task: string, id: string) => async (dispatch: any) => {
     id: id,
   };
 
-  console.log(taskData);
+
   
   
   const response = await axios.post('http://localhost:4000/task/add', taskData, config);
   if (response) {
     localStorage.setItem('task', JSON.stringify(response.data));
+
+    console.log(response.data);
+    
 
     dispatch(taskAddedSuccessfully(response.data));
     toast.success('task added successfully');

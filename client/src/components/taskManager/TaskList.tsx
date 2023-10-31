@@ -41,10 +41,10 @@ const TaskList = () => {
     <div>
       <ul className='list-header'>
         <li>
-          <h5>Id</h5>
+          <h5>Issue name</h5>
         </li>
         <li>
-          <h5>Issue Name</h5>
+          <h5>Edit</h5>
         </li>
         <li>
           <h5>Status</h5>

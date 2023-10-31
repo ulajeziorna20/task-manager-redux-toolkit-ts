@@ -8,7 +8,7 @@ const Sidebar = () => {
   const auth = useSelector((state: RootState) => state.auth.currentUser);
 
   return (
-    <div>
+    <div className='sidebarBox'>
       <ul className='sidebar'>
         <li className='list-item'>
           <h5>{auth?.username}</h5>
