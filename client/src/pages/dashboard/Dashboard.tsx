@@ -61,9 +61,6 @@ const Dashboard = () => {
 
     fetchTasks();
 
-
-
-
   }, [currentUser?.token, currentUser?.id, dispatch]);
 
 

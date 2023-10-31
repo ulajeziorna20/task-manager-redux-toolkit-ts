@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Dashboard from './pages/dashboard/Dashboard';
 import TaskManager from './pages/taskManagement/TaskManager';
+import Settings from './components/sidebar/Settings';
 
 
 
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/settings' element={<Settings />} />
           <Route
             path='/signin'
             element={<Signin />}

@@ -1,13 +1,17 @@
 .taskmanager {
   width: 100%;
   display: flex;
+  height: auto;
 
   &__left {
-      width: 15%;
+    width: 15%;
+    position: sticky;
   }
 
   &__right {
-      width: 85%;
+    width: 85%;
+    height: 100%;
+
   }
 
 }
