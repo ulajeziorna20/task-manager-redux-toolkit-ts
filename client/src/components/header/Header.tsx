@@ -15,7 +15,7 @@ const Header = () => {
     e.preventDefault();
     dispatch(logoutSuccess());
     localStorage.removeItem('auth');
-    history.push('/signin');
+    history.push('/');
     window.location.reload();
   };
 
@@ -34,7 +34,7 @@ const Header = () => {
         </div>
         <div className="header_buttons">
           {auth && auth?.token ? (
-           <Link to='/signin' className='button' onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => handleClick(e)}>
+           <Link to='/' className='button' onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => handleClick(e)}>
            SignOut
          </Link>) : (
             <div>

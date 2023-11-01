@@ -8,30 +8,38 @@ import Dashboard from './pages/dashboard/Dashboard';
 import TaskManager from './pages/taskManagement/TaskManager';
 import Settings from './components/sidebar/Settings';
 
+// toastify
 
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
+
+
+
   return (
     <div className="App">
+
+
+
       <Header />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/settings' element={<Settings />} />
-          <Route
-            path='/signin'
-            element={<Signin />}
-          />
-          <Route
-            path='/signup'
-            element={<Signup />}
-          />
-          <Route
-            path='/taskmanager'
-            element={<TaskManager />}
-          />
-        </Routes>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/settings' element={<Settings />} />
+        <Route
+          path='/signin'
+          element={<Signin />}
+        />
+        <Route
+          path='/signup'
+          element={<Signup />}
+        />
+        <Route
+          path='/taskmanager'
+          element={<TaskManager />}
+        />
+      </Routes>
     </div>
   )
 }

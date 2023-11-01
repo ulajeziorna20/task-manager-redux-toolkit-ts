@@ -31,7 +31,7 @@ export type currentUser = {
 export type initialStateType = {
   isLoading: Boolean,
   currentUser: currentUser | null,
-  error: Error | null,
+  error: string | null,
 }
 
 
@@ -53,14 +53,14 @@ export const authSlice = createSlice({
       state.currentUser = action.payload;
       state.isLoading = false;
     },
-    loginFailure: (state: initialStateType, action: PayloadAction<Error>): void => {
+    loginFailure: (state: initialStateType, action: PayloadAction<string>): void => {
       state.error = action.payload;
     },
     registerSuccess: (state: initialStateType, action: PayloadAction<currentUser>): void => {
       state.currentUser = action.payload;
       state.isLoading = false;
     },
-    registerFailure: (state: initialStateType, action: PayloadAction<Error>): void => {
+    registerFailure: (state: initialStateType, action: PayloadAction<string>): void => {
       state.error = action.payload;
     },
     logoutSuccess: (state: initialStateType): void => {

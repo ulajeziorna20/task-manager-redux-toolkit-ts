@@ -25,15 +25,20 @@ export const register = (user: String) => async (dispatch: any) => {
       console.log(res);
 
       dispatch(registerSuccess(res.data));
-      toast.success('register successfull');
+      toast.success('registration successfull!', {
+        position: toast.POSITION.TOP_CENTER
+      })
+    
       // trtzeba naprawic
       history.push('/signin');
       window.location.reload();
     }
   }).catch((error) => {
     console.error(error);
-    dispatch(registerFailure(error));
-    toast.error('registration failed');
+    dispatch(registerFailure(error.response.data));
 
+    toast.error('registration failed', {
+      position: toast.POSITION.TOP_CENTER
+    })
   })
 }
