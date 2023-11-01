@@ -10,8 +10,6 @@ const Home = () => {
   // const auth = useSelector<RootState, object>((state) => state.auth);
   const auth = useSelector((state: RootState) => state.auth.currentUser);
 
-  console.log(auth?.token);
-
 
 
   return (

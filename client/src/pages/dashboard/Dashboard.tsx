@@ -34,27 +34,15 @@ const Dashboard = () => {
 
   }
 
-  console.log("tyle ma pending " + pendingTaskVar.length);
-
-
-
-  console.log(tasklist.length);
-
-
-  console.log('jestem drugi');
-
-
-
+ 
 
 
   useEffect(() => {
-    console.log('jestem UE');
+  
 
     const fetchTasks = async () => {
       if (currentUser?.token !== undefined && currentUser?.token !== null) {
         await dispatch(getAllTasks(currentUser.token, currentUser.id));
-        // Tutaj możesz być pewien, że zadania zostały pobrane przed użyciem useSelector
-        console.log('Zadania zostały pobrane')
 
       }
     };

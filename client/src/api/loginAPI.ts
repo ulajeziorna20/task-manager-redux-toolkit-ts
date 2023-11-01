@@ -33,7 +33,7 @@ export const signin = (user: String) => async (dispatch: any) => {
 
     setTimeout(() => {
       window.location.reload();
-    }, 5000)
+    }, 3000)
 
 
 
